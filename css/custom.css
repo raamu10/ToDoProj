@@ -1,0 +1,19 @@
+.strikeList {
+    text-decoration: line-through;
+}
+
+.success-msg {
+    color : green;
+}
+
+.error-msg {
+    color : red;
+}
+
+.show {
+    display : block;
+}
+
+.hide {
+    display : none;
+}

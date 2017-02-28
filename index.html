@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="ToDoApp">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/ToDoController.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+  </head>
+  <body ng-controller="ToDoController as todoCtrl">
+    <div>
+      <h1>To Do</h1>
+    </div>
+    <div>
+      <input type="text" ng-model="todoCtrl.todo.title" placeholder="Enter a Title">
+      <input type="text" ng-model="todoCtrl.listItem.name" placeholder="Enter a name">
+      <button ng-click="todoCtrl.addToList(todoCtrl.listItem)">Add to List</button>
+      <button ng-click="todoCtrl.saveList()">Save List</button>
+      <button ng-click="todoCtrl.clearList()">Clear List</button>
+      <button ng-click="todoCtrl.getSavedListFromSession()">Get Stored List</button>
+    </div>
+    <div class="success-msg">{{todoCtrl.successMessage}}</div>
+    <div class="error-msg">{{todoCtrl.errorMessage}}</div>
+    <div ng-repeat="item in todoCtrl.listOfItems">
+        <h3>List Title: {{item.title}}</h3> 
+        <div ng-repeat="todoItem in item.todoList" ng-class="todoItem.isDone ? 'strikeList' : ''"> 
+           <input type="checkbox" ng-model="todoItem.isDone">{{todoItem.name}}
+        </div>
+    </div>
+  </body>
+</html>
